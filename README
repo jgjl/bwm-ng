@@ -1,0 +1,152 @@
+bwm-ng v0.6
+Copyright (C) 2004-2007 Volker Gropp (bwmng@gropp.org)
+http://www.gropp.org/?id=projects&sub=bwm-ng
+
+What is this?
+=============
+
+Bandwidth Monitor NG is a small and simple console-based live network and disk
+io bandwidth monitor for Linux, BSD, Solaris, Mac OS X and others.
+
+Short list of features:
+- supports /proc/net/dev, netstat, getifaddr, sysctl, kstat, /proc/diskstats 
+  /proc/partitions, IOKit, devstat and libstatgrab
+- unlimited number of interfaces/devices supported
+- interfaces/devices are added or removed dynamically from list
+- white-/blacklist of interfaces/devices
+- output of KB/s, Kb/s, packets, errors, average, max and total sum
+- output in curses, plain console, CSV or HTML
+- configfile
+
+This was influenced by the old bwm util written by written by Barney
+(barney@freewill.tzo.com) which had some issues with faster interfaces and 
+was very simple. Since i had almost all code done anyway for other projects, 
+i decided to create my own version.
+
+I actually dont know if netstat input is usefull at all. I saw this elsewhere,
+so i added it. Its target is "netstat 1.42 (2001-04-15)" linux or 
+Free/Open/NetBSD. If there are other formats i would be happy to add them.
+
+For info about libstatgrab please refer to http://www.i-scream.org/libstatgrab/
+
+
+Supported Platforms
+===================
+
+network routines sucessfully tested on:
+Linux 2.4*, Linux 2.6*
+FreeBSD 4.8, 5.3, 6.2*
+MacOS X 10.1 and above*
+Solaris 10 x86*
+SunOS 5.9 sparc Solaris 9
+OpenBSD 3.4, 3.6, 4.0*
+NetBSD 1.6.1, 2.0, 3.0*
+IRIX64 6.5
+Win2000, WinXP, Windows Vista
+
+*disk monitoring working aswell
+
+please email me of working or not working platforms. Disk IO might work only on a limited 
+number of platforms.
+
+
+INSTALL
+=======
+
+For detailed decription please read INSTALL
+./configure --help for a list of options
+
+./configure
+make
+
+to install use as root: 
+make install
+
+WIN32
+=====
+
+To compile the Windows version in Linux (debian): 
+./configure --with-win32 --without-procnetdev --without-diskstats --without-curses --without-netstatlinux --build i686-pc-linux-gnu --host i586-mingw32msvc
+make
+
+get ansi.sys for better output: http://en.wikipedia.org/wiki/ANSI.SYS
+
+Specs
+=====
+
+csv output format: 
+Type rate:
+unix timestamp;iface_name;bytes_out/s;bytes_in/s;bytes_total/s;bytes_in;bytes_out;packets_out/s;packets_in/s;packets_total/s;packets_in;packets_out;errors_out/s;errors_in/s;errors_in;errors_out\n
+Type svg, sum, max:
+unix timestamp;iface_name;bytes_out;bytes_in;bytes_total;packets_out;packets_in;packets_total;errors_out;errors_in\n
+Use --count 0 to skip the all zero output after start.
+
+html output format:
+edit the bwm-ng.css to modify the output. Please note the htmlrefresh only 
+modifies the META refresh, you maybe wanna sync --timeout and --htmlrefresh
+
+
+USAGE
+=====
+
+USAGE: bwm-ng [OPTION] ... [CONFIGFILE]
+Please read the manpage or `bwm-ng -h` for a list and explanation of options.
+
+
+Keybindings (curses only):
+  'h'     show help
+  'q'     exit
+  '+'     increases timeout by 100ms
+  '-'     decreases timeout by 100ms
+  'k','d' switch KB and auto assign Byte/KB/MB/GB
+  'a'     cycle: show all interfaces, only those which are up, 
+                 only up and not hidden
+  's'     sum hidden ifaces to total aswell or not
+  'n'     cycle: input methods
+  'u'     cycle: bytes,bits,packets,errors
+  't'     cycle: current rate, max, sum since start, average for last 30 sec
+	
+
+Configfile
+==========
+
+either via cmdline or /etc/bwm-ng.conf or ~/.bwm-ng.conf
+it consists of:
+longoption=value
+with 1 or 0 as values for keys without a value in cmdline options.
+
+For more help take a look at bwm-ng.conf-example
+
+
+Misc
+====
+
+Bugs/Known Problems:
+  - curses output coredumps on netbsd 1.6.1 (maybe others) with unknown TERM
+    set and configfile support compiled in
+  - no other yet, wow ;) (please report if you found one)
+ 
+Todo:
+  - Docs
+  - checking options to be valid
+  - mysql output (ipac-ng compatible)
+  - setting which stats to output for csv/sql
+  - distributed gathering of stats (client/server)
+  - whatever you can think of
+
+
+ ******************************************************************************
+ *  This program is free software; you can redistribute it and/or modify      *
+ *  it under the terms of the GNU General Public License as published by      *
+ *  the Free Software Foundation; either version 2 of the License, or         *
+ *  (at your option) any later version.                                       *
+ *                                                                            *
+ *  This program is distributed in the hope that it will be useful,           *
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of            *
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             *
+ *  GNU General Public License for more details.                              *
+ *                                                                            *
+ *  You should have received a copy of the GNU General Public License         *
+ *  along with this program; if not, write to the Free Software               *
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA *
+ ******************************************************************************
