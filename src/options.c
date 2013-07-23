@@ -426,8 +426,9 @@ void get_cmdln_options(int argc, char *argv[]) {
 				break;
 #ifdef PROC_NET_DEV
 	    case 'p':
-                printf("Pidlist: ");
+                printf("Pidlist! \n");
                 if (optarg) pid_list=(char *)strdup(optarg);
+                printf("Pidlist: %s", pid_list);
                 break;
 #endif
             case 'I':
