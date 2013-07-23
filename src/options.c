@@ -431,7 +431,8 @@ void get_cmdln_options(int argc, char *argv[]) {
 				    char *pid_str=(char *)strdup(optarg);
 				    pid_list=strtok(pid_str,",");
 					int list_length = sizeof(pid_list)/sizeof(pid_list[0]);
-					for(int i = 0; i < list_length; i++) {
+                    int i;
+					for(i = 0; i < list_length; i++) {
 						printf("%d", pid_list[i]);
 					}
 					printf("Pidlist: %s\n", pid_list);
