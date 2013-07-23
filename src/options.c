@@ -432,7 +432,7 @@ void get_cmdln_options(int argc, char *argv[]) {
 				    char *str=strtok(pid_str,",");
                     int i;
 					while (str != NULL) {
-						printf("%d,", pid_list[i]);
+						printf("%s,", pid_list[i]);
                         str = strtok(NULL,","); 
 					}
 					printf("\n");
