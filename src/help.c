@@ -65,7 +65,9 @@ inline void cmdln_printhelp() {
     printf("\nInput:\n");
     print_help_line("-i <method>","-i, --input <method>","input method, one of:" INPUT_METHODS);
 #ifdef PROC_NET_DEV
+    print_help_line("-p <list>","-p, --pids <list>" ,"show interfaces located in namesspaces from <list>");
     print_help_line("-f <file>","-f, --procfile <file>","filename to read raw data from. (" PROC_NET_DEV ")");
+    print_help_line("-p <list>","-p, --pids <list>" ,"show interfaces located in namesspaces from <list>.");
 #endif
 #ifdef PROC_DISKSTATS
 	 print_help_line("","    --diskstatsfile <file>","filename to read diskstats (Linux 2.6+) from. (" PROC_DISKSTATS ")");

@@ -48,6 +48,7 @@ char check_if_up(char *ifname) {
 
 /* chooses the correct get_iface_stats() to use */
 inline void get_iface_stats(char _n) {
+    // Add ns switching here
    switch (input_method) {
 #ifdef NETSTAT
        case NETSTAT_IN:
@@ -81,7 +82,7 @@ inline void get_iface_stats(char _n) {
         case SYSCTL_IN:
             get_iface_stats_sysctl(_n);
             break;
-#endif				
+#endif
 #if SYSCTLDISK_IN
 			case SYSCTLDISK_IN:
 				get_iface_stats_sysctldisk(_n);
