@@ -428,6 +428,7 @@ void get_cmdln_options(int argc, char *argv[]) {
 	    case 'p':
                 printf("Pidlist: ");
                 if (optarg) {
+                    //char* list[250];
 				    char *pid_str=(char *)strdup(optarg);
 				    char *str=strtok(pid_str,",");
                     int i;
