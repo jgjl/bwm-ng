@@ -429,11 +429,11 @@ void get_cmdln_options(int argc, char *argv[]) {
                 printf("Pidlist: ");
                 if (optarg) {
 				    char *pid_str=(char *)strdup(optarg);
-				    pid_list=strtok(pid_str,",");
-					int list_length = sizeof(pid_list)/sizeof(pid_list[0]);
+				    char *str=strtok(pid_str,",");
                     int i;
-					for(i = 0; i < list_length; i++) {
+					while (str != NULL)) {
 						printf("%d,", pid_list[i]);
+                        str = strtok(NULL,","); 
 					}
 					printf("\n");
 				}
