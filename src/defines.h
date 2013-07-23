@@ -253,7 +253,7 @@
 
 /* build short options */
 #ifdef PROC_NET_DEV
-#define PROC_SHORT_OPT "f:"
+#define PROC_SHORT_OPT "f:p:"
 #else 
 #define PROC_SHORT_OPT
 #endif
