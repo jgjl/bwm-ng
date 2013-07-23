@@ -426,13 +426,17 @@ void get_cmdln_options(int argc, char *argv[]) {
 				break;
 #ifdef PROC_NET_DEV
 	    case 'p':
-                printf("Pidlist! \n");
+                printf("Pidlist: ");
                 if (optarg) {
-		    char *pid_str=(char *)strdup(optarg);
-		    pid_list=strtok(pid_str,",");
-		}
-                printf("Pidlist: %s\n", pid_list);
-                break;
+				    char *pid_str=(char *)strdup(optarg);
+				    pid_list=strtok(pid_str,",");
+					int list_length = sizeof(pid_list)/sizeof(pid_list[0]);
+					for(int i = 0; i < list_length; i++) {
+						printf("%s", pid_list[i]);
+					}
+					printf("Pidlist: %s\n", pid_list);
+				}
+				break;
 #endif
             case 'I':
                 if (optarg) iface_list=(char *)strdup(optarg);
