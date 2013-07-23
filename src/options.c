@@ -424,6 +424,11 @@ void get_cmdln_options(int argc, char *argv[]) {
                     input_method=str2in_method(optarg);
                 }
 				break;
+#ifdef PROC_NET_DEV
+	    case 'p':
+                if (optarg) pid_list=(char *)strdup(optarg);
+                break;
+#endif
             case 'I':
                 if (optarg) iface_list=(char *)strdup(optarg);
                 break;

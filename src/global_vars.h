@@ -40,6 +40,7 @@ EXTERN char PROC_PARTITIONS_FILE[PATH_MAX];
 #endif
 #ifdef NETSTAT
 EXTERN char NETSTAT_FILE[PATH_MAX];
+EXTERN char *pid_list;
 #endif
 EXTERN unsigned int delay;
 #if EXTENDED_STATS
