@@ -428,7 +428,8 @@ void get_cmdln_options(int argc, char *argv[]) {
 	    case 'p':
                 printf("Pidlist! \n");
                 if (optarg) pid_list=(char *)strdup(optarg);
-                printf("Pidlist: %s", pid_list);
+
+                printf("Pidlist: %s\n", pid_list);
                 break;
 #endif
             case 'I':
