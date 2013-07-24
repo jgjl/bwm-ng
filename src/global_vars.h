@@ -33,6 +33,8 @@
 EXTERN int if_count;
 #ifdef PROC_NET_DEV
 EXTERN char PROC_FILE[PATH_MAX];
+EXTERN int *nsfd_list;
+EXTERN int nsfd_cnt;
 #endif
 #ifdef PROC_DISKSTATS
 EXTERN char PROC_DISKSTATS_FILE[PATH_MAX];

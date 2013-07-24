@@ -27,13 +27,11 @@
 #include <sys/stat.h>
 #include <stdbool.h>
 
-#include <sched.h>
-
 #ifndef NETNS_H
 #define	NETNS_H
 
 /* Take the pid list and create a set of netns file handlers.*/
-int *process_netns_pid_list(char *pid_str);
+void *process_netns_pid_list(char *pid_str);
 
 #endif	/* NETNS_H */
 

@@ -75,8 +75,7 @@ netstat.o: input/netstat.c input/netstat.h input/retrieve.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
  /usr/include/x86_64-linux-gnu/bits/stat.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl2.h \
- /usr/include/x86_64-linux-gnu/sys/stat.h /usr/include/sched.h \
- /usr/include/x86_64-linux-gnu/bits/sched.h input/../bwm-ng.h \
+ /usr/include/x86_64-linux-gnu/sys/stat.h input/../bwm-ng.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/x86_64-linux-gnu/sys/uio.h \
  /usr/include/x86_64-linux-gnu/bits/uio.h \
@@ -323,10 +322,6 @@ input/../netns.h:
 /usr/include/x86_64-linux-gnu/bits/fcntl2.h:
 
 /usr/include/x86_64-linux-gnu/sys/stat.h:
-
-/usr/include/sched.h:
-
-/usr/include/x86_64-linux-gnu/bits/sched.h:
 
 input/../bwm-ng.h:
 

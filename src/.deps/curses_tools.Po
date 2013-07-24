@@ -94,8 +94,7 @@ curses_tools.o: curses_tools.c global_vars.h defines.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl-linux.h \
  /usr/include/x86_64-linux-gnu/bits/stat.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl2.h \
- /usr/include/x86_64-linux-gnu/sys/stat.h /usr/include/sched.h \
- /usr/include/x86_64-linux-gnu/bits/sched.h /usr/include/stropts.h \
+ /usr/include/x86_64-linux-gnu/sys/stat.h /usr/include/stropts.h \
  /usr/include/x86_64-linux-gnu/bits/xtitypes.h \
  /usr/include/x86_64-linux-gnu/bits/stropts.h /usr/include/linux/tty.h
 
@@ -394,10 +393,6 @@ netns.h:
 /usr/include/x86_64-linux-gnu/bits/fcntl2.h:
 
 /usr/include/x86_64-linux-gnu/sys/stat.h:
-
-/usr/include/sched.h:
-
-/usr/include/x86_64-linux-gnu/bits/sched.h:
 
 /usr/include/stropts.h:
 
