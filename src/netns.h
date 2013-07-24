@@ -1,7 +1,7 @@
 /******************************************************************************
- *  bwm-ng options header                                                     *
+ *  File: netns.h                                                             *
  *                                                                            *
- *  Copyright (C) 2004-2007 Volker Gropp (bwmng@gropp.org)                    *
+ *  Copyright (C) 2013 Jeremias Blendin 	                              *
  *                                                                            *
  *  for more info read README.                                                *
  *                                                                            *
@@ -21,27 +21,19 @@
  *                                                                            *
  *****************************************************************************/
 
-
-#ifndef __OPTIONS_H
-#define __OPTIONS_H
-
-#include "defines.h"
-#include "types.h"
-
-#ifdef CONFIG_FILE
-#include <ctype.h>
 #include <string.h>
-#ifdef HAVE_GETPWUID
-#include <unistd.h>
-#include <pwd.h>
+#include <fcntl.h>
 #include <sys/types.h>
-#endif
-#endif
+#include <sys/stat.h>
+#include <stdbool.h>
 
-#include "help.h"
-#include "bwm-ng.h"
-#include "netns.h"
+#include <sched.h>
 
-void get_cmdln_options(int argc, char *argv[]);
+#ifndef NETNS_H
+#define	NETNS_H
 
-#endif
+/* Take the pid list and create a set of netns file handlers.*/
+int *process_netns_pid_list(char *pid_str);
+
+#endif	/* NETNS_H */
+
