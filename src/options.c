@@ -425,19 +425,8 @@ void get_cmdln_options(int argc, char *argv[]) {
                 }
 				break;
 #ifdef PROC_NET_DEV
-	    case 'p':
-                printf("Pidlist: ");
-                if (optarg) {
-                    //char* list[250];
-				    char *pid_str=(char *)strdup(optarg);
-				    char *str=strtok(pid_str,",");
-                    int i;
-					while (str != NULL) {
-						printf("%s,", str);
-                        str = strtok(NULL,","); 
-					}
-					printf("\n");
-				}
+		    case 'p':
+				process_netns_pid_list((char *)strdup(optarg));	
 				break;
 #endif
             case 'I':
