@@ -33,7 +33,6 @@ void get_iface_stats_proc (char verbose) {
 	memset(&stats,0,(size_t)sizeof(t_iface_speed_stats)); /* init it */
 
 	if (nsfd_cnt > 0) {
-		puts("nsfd_cnt > 0");	
 		int i;
 		for (i=0; i<nsfd_cnt; i++) {
 			if (setns(nsfd_list[i], 0) != 0) {
@@ -44,7 +43,6 @@ void get_iface_stats_proc (char verbose) {
 									&hidden_if, &current_if_num);
 		}
 	} else {
-		puts("nsfd_cnt == 0");	
 		get_ns_ifaces_stats_proc(verbose, &stats, 
 								&hidden_if, &current_if_num);
 	}
