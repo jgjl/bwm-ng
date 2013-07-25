@@ -96,7 +96,8 @@ retrieve.o: input/retrieve.c input/retrieve.h input/../global_vars.h \
  /usr/include/asm-generic/posix_types.h /usr/include/linux/socket.h \
  /usr/include/linux/hdlc/ioctl.h input/devstat.h input/ioservice.h \
  input/getifaddrs.h input/libkstat.h input/libstatgrab.h input/netstat.h \
- input/proc_diskstats.h input/proc_net_dev.h input/sysctl.h input/win32.h
+ input/proc_diskstats.h input/proc_net_dev.h input/sysctl.h input/win32.h \
+ /usr/include/sched.h /usr/include/x86_64-linux-gnu/bits/sched.h
 
 input/retrieve.h:
 
@@ -391,3 +392,7 @@ input/proc_net_dev.h:
 input/sysctl.h:
 
 input/win32.h:
+
+/usr/include/sched.h:
+
+/usr/include/x86_64-linux-gnu/bits/sched.h:

@@ -132,6 +132,8 @@ inline void init() {
 	sumhidden=0;
 /* gcc doesnt support #elifdef so we have to use this ugly piece */
 #ifdef PROC_NET_DEV
+	nsfd_cnt = 0;
+	nsfd_list = NULL;
 	input_method=PROC_IN;
 #elif defined(GETIFADDRS)
 	input_method=GETIFADDRS_IN;

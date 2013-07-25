@@ -39,11 +39,11 @@ void print_array(int *array, int len)
 }
 
 
-bool array_contains(int pid, int *pid_list, int len)
+bool array_contains(int pid, unsigned int *ns_list, int len)
 {
 	int i;
 	for (i=0; i<len; i++) {
-		if (pid == pid_list[i]) {
+		if (pid == ns_list[i]) {
 	    	return true;
 		}
     }	
@@ -118,6 +118,7 @@ void *process_netns_pid_list(char *pid_str)
     //printf("Anzahl: %d\n", ns_cnt);
 	//print_array(ns_list, pid_cnt);
 
+    /* Store result list of netns file descriptors in the global variable. */
 	nsfd_list = malloc(ns_cnt*sizeof(int));
     int i;
 	for (i=0; i<ns_cnt;i++) {
