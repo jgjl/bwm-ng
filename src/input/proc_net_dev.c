@@ -26,20 +26,51 @@
 #ifdef PROC_NET_DEV
 /* do the actual work, get and print stats if verbose */
 void get_iface_stats_proc (char verbose) {
-	char *ptr;
 
-	FILE *f=NULL;
-	char *buffer=NULL,*name=NULL;
-    
 	int hidden_if=0,current_if_num=0;
 	t_iface_speed_stats stats; /* local struct, used to calc total values */
-	t_iface_speed_stats tmp_if_stats;
 
 	memset(&stats,0,(size_t)sizeof(t_iface_speed_stats)); /* init it */
+
+	if (nsfd_cnt > 0) {
+		puts("nsfd_cnt > 0");	
+		int i;
+		for (i=0; i<nsfd_cnt; i++) {
+			if (setns(nsfd_list[i], 0) != 0) {
+				perror("setns");
+				return 1;
+			}
+			get_ns_ifaces_stats_proc(verbose, &stats, 
+									&hidden_if, &current_if_num);
+		}
+	} else {
+		puts("nsfd_cnt == 0");	
+		get_ns_ifaces_stats_proc(verbose, &stats, 
+								&hidden_if, &current_if_num);
+	}
+
+	/* add to total stats and output current stats if verbose */
+	finish_iface_stats (verbose, stats, hidden_if, current_if_num);
+    return;
+}
+
+
+void get_ns_ifaces_stats_proc(char verbose,
+						t_iface_speed_stats *stats,
+						int *hidden_if,
+						int *current_if_num)
+{
+	char *ptr;
+	FILE *f=NULL;
+	char *buffer=NULL,*name=NULL;
+
+	t_iface_speed_stats tmp_if_stats;
+    
 	/* dont open proc_net_dev if netstat_i is requested, else try to open and if it fails fallback */
 	if (!(f=fopen(PROC_FILE,"r"))) {
 		deinit(1, "open of procfile failed: %s\n",strerror(errno));
 	}
+
 	buffer=(char *)malloc(MAX_LINE_BUFFER);
 
 	/* we skip first 2 lines if not bsd at any mode */
@@ -58,7 +89,7 @@ void get_iface_stats_proc (char verbose) {
         sscanf(ptr,"%llu%llu%llu%*i%*i%*i%*i%*i%llu%llu%llu",&tmp_if_stats.bytes.in,&tmp_if_stats.packets.in,&tmp_if_stats.errors.in,&tmp_if_stats.bytes.out,&tmp_if_stats.packets.out,&tmp_if_stats.errors.out);
         sscanf(buffer,"%s",name);
 		/* init new interfaces and add fetched data to old or new one */
-		hidden_if = process_if_data (hidden_if, tmp_if_stats, &stats, name, current_if_num, verbose
+		hidden_if = process_if_data (hidden_if, tmp_if_stats, stats, name, current_if_num, verbose
 #ifdef IOCTL
                 ,check_if_up(name)
 #else
@@ -67,14 +98,12 @@ void get_iface_stats_proc (char verbose) {
 				);
 		current_if_num++;
     } /* fgets done (while) */
-	/* add to total stats and output current stats if verbose */
-	finish_iface_stats (verbose, stats, hidden_if,current_if_num);
+
     /* clean buffers */
 	free(buffer);
 	free(name);
 	/* close input stream */
 	fclose(f);
-    return;
 }
-#endif
 
+#endif

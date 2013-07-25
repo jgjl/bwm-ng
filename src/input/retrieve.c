@@ -66,20 +66,7 @@ inline void get_iface_stats(char _n) {
 #endif
 #ifdef PROC_NET_DEV
        case PROC_IN:
-		    if (nsfd_cnt > 0) {
-				puts("nsfd_cnt > 0");	
-				int i;
-				for (i=0; i<nsfd_cnt; i++) {
-					if (setns(nsfd_list[i], 0) != 0) {
-						perror("setns");
-						return 1;
-					}
-					get_iface_stats_proc(_n);
-				}
-		    } else {
-				puts("nsfd_cnt == 0");	
-				get_iface_stats_proc(_n);
-			}
+			get_iface_stats_proc(_n);
             break;
 #endif
 #ifdef GETIFADDRS
