@@ -27,5 +27,6 @@ correctly
 
 
 Usage example:
+```
 sudo bwm-ng -p 1294,1200,4345 -o csv -I %lo
-
+```
