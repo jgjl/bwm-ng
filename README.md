@@ -9,7 +9,7 @@ bwm-ng with Linux Network Namespaces Support
 ============================================
 Added by Jeremias Blendin, Peer-to-Peer Systems Engineering Lab, TU Darmstadt, Germany
 
-An version of bwm-ng v0.6 that allows to monitor interfaces of different Linux network namespaces in parallel. A list of PIDs is supplied, which network namespaces are included in the network bandwidth monitoring process. The namespaces of the given PIDs are extracted and the list of unique network namespaces is used for bandwidth monitoring. The list of PIDs is supplied by using the new "-p" command line parameter.  
+A version of bwm-ng v0.6 that allows to monitor interfaces belonging to multiple Linux network namespaces. Given a list of PIDs, their network namespaces are included in the network bandwidth monitoring. The namespaces of the given PIDs are extracted and the list of unique network namespaces is used for bandwidth monitoring. The list of PIDs is supplied by using the new "-p" command line parameter.  
 
 The author is no C programming expert, this version is considered alpha quality. Improvements and suggestions are welcome.
 
