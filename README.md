@@ -17,7 +17,7 @@ The author is no C programming expert, this version is considered alpha quality.
 Restrictions:
 - Only works on Linux, tested on Ubuntu 12.10 and 13.04
 - Only works with the PROC_NET_DEV/proc input
-- Only network interfaces with unique names can be monitored. Users are should
+- Only network interfaces with unique names can be monitored. Users should
 exclude interfaces with duplicated names -- such as the loopback interfaces -- by adding an appropriate
 interface selector parameter (eg. "-I %lo")
 - Tested with csv output only, the curses interface does not display the interfaces
